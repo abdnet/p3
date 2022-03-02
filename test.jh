@@ -97,8 +97,6 @@ relationship OneToOne {
 }
 relationship OneToMany {
 	 AmawalWord{traduction} to TamazightToLang
-     	 TamazightToLang{word} to AmawalWord
-
 }
 relationship OneToOne {
 	 TamazightToLang{langue} to Langue
