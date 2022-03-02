@@ -1,0 +1,128 @@
+
+application {
+  config {
+    baseName AmawalAmazigh,
+    applicationType monolith,
+    packageName org.amawal,
+    authenticationType jwt,
+    prodDatabaseType mysql,
+    buildTool maven,
+    clientFramework angular
+  }
+  entities *
+}
+
+
+entity Groupe {
+	groupeId Long,
+    groupeCode String ,
+    habilitationLevel Integer 
+    }
+    
+entity Utilisateur {
+	userId Long,
+	nom String,
+	prenom String,
+	adresseEmail String,
+	avatar String,
+	dateInscription Instant,
+	validProfil Boolean,
+	activateProfil Boolean,
+	genre String,
+	password String,
+}
+entity Category {
+	categoryId Long ,
+    securityLevel Integer,
+}
+entity WordType {
+	typeId Long,
+	type String
+}
+entity WordInfo {
+	wordInfoId Long,
+	contributionDate Instant,
+	validationDate Instant,
+	etat Integer,
+}
+
+entity Region {
+	reginId Long,
+	regionNom String,
+    pays String
+}
+
+entity Theme {
+	themeId Long,
+	theme String
+}
+
+entity Langue {
+	langueId Long,
+	langue String
+}
+entity Dialecte {
+	dialecteId Long,
+	dialecte String,
+}
+
+entity TamazightToLang {
+	traductionId Long,
+}
+entity AmawalWord {
+	wordId Long,
+	orthographeTifinagh String,
+	orthographeLatin String,
+}
+
+relationship ManyToOne {
+	 Category to Utilisateur
+}
+relationship ManyToOne {
+	 Category to Groupe
+}
+
+relationship ManyToOne {
+	 AmawalWord to WordType
+}
+
+relationship ManyToMany {
+	 AmawalWord to Dialecte
+}
+relationship ManyToOne {
+	 AmawalWord to Theme
+}
+relationship OneToOne {
+	 AmawalWord to WordInfo
+}
+relationship OneToMany {
+	 AmawalWord to TamazightToLang
+}
+relationship OneToOne {
+	 TamazightToLang to Langue
+}
+relationship OneToMany {
+	 TamazightToLang to AmawalWord
+}
+relationship ManyToMany {
+	 Dialecte to Region
+}
+
+relationship ManyToOne {
+	 WordInfo to Utilisateur
+}
+
+relationship ManyToOne {
+	 WordInfo to Utilisateur
+     
+}
+paginate User with infinite-scroll
+paginate AmawalWord  with pagination
+paginate TamazightToLang  with pagination
+
+
+service all with serviceImpl
+
+
+
+    
