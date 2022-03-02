@@ -1,0 +1,128 @@
+
+application {
+  config {
+    baseName AmawalAmazigh,
+    applicationType monolith,
+    packageName org.amawal,
+    authenticationType jwt,
+    prodDatabaseType mysql,
+    buildTool maven,
+    clientFramework angular
+  }
+  entities *
+}
+
+
+entity Groupe {
+	groupeId Long,
+    groupeCode String ,
+    habilitationLevel Integer 
+    }
+    
+entity User {
+	userId Long,
+	nom String,
+	prenom String,
+	adresseEmail String,
+	avatar String,
+	dateInscription Instant,
+	validProfil Boolean,
+	activateProfil Boolean,
+	genre String,
+	password String,
+}
+entity Category {
+	categoryId Long ,
+    securityLevel Integer,
+}
+entity WordType {
+	typeId Long,
+	type String
+}
+entity WordInfo {
+	wordInfoId Long,
+	contributionDate Instant,
+	validationDate Instant,
+	etat Integer,
+}
+
+entity Region {
+	reginId Long,
+	regionNom String,
+    pays String
+}
+
+entity Theme {
+	themeId Long,
+	theme String
+}
+
+entity Langue {
+	langueId Long,
+	langue String
+}
+entity Dialecte {
+	dialecteId Long,
+	dialecte String,
+}
+
+entity TamazightToLang {
+	traductionId Long,
+}
+entity AmawalWord {
+	wordId Long,
+	orthographeTifinagh String,
+	orthographeLatin String,
+}
+
+relationship ManyToOne {
+	 Category{users} to User
+}
+relationship ManyToOne {
+	 Category{groupe} to Groupe
+}
+
+relationship ManyToOne {
+	 AmawalWord{wordType} to WordType
+}
+
+relationship ManyToMany {
+	 AmawalWord{dialectes} to Dialecte
+}
+relationship ManyToOne {
+	 AmawalWord{theme} to Theme
+}
+relationship OneToOne {
+	 AmawalWord{wordInfo} to WordInfo
+}
+relationship OneToMany {
+	 AmawalWord{traduction} to TamazightToLang
+}
+relationship OneToOne {
+	 TamazightToLang{langue} to Langue
+}
+relationship OneToMany {
+	 TamazightToLang{word} to AmawalWord
+}
+relationship ManyToMany {
+	 Dialecte{region} to Region
+}
+
+relationship ManyToOne {
+	 WordInfo{contributeur} to User
+}
+
+relationship ManyToOne {
+	 WordInfo{validateur} to User
+     
+}
+paginate User with infinite-scroll
+paginate AmawalWord  with pagination
+paginate TamazightToLang  with pagination
+
+
+service all with serviceImpl
+
+
+
+    
