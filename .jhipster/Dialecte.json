@@ -1,0 +1,39 @@
+{
+  "applications": ["AmawalAmazigh"],
+  "changelogDate": "20220303141313",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "dialecte",
+  "fields": [
+    {
+      "fieldName": "dialecteId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "dialecte",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Dialecte",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "region",
+      "otherEntityRelationshipName": "dialecte",
+      "ownerSide": true,
+      "relationshipName": "region",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "amawalWord",
+      "otherEntityRelationshipName": "dialecte",
+      "ownerSide": false,
+      "relationshipName": "word",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

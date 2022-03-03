@@ -1,0 +1,56 @@
+{
+  "applications": ["AmawalAmazigh"],
+  "changelogDate": "20220303140613",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "utilisateur",
+  "fields": [
+    {
+      "fieldName": "utilisateurId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "nom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "prenom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "adresseEmail",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "avatar",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateInscription",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "validProfil",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "activateProfil",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "genre",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "password",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Utilisateur",
+  "pagination": "infinite-scroll",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}

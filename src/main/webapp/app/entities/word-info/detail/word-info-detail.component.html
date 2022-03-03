@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="wordInfo">
+      <h2 data-cy="wordInfoDetailsHeading"><span jhiTranslate="amawalAmazighApp.wordInfo.detail.title">Word Info</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ wordInfo.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="amawalAmazighApp.wordInfo.wordInfoId">Word Info Id</span></dt>
+        <dd>
+          <span>{{ wordInfo.wordInfoId }}</span>
+        </dd>
+        <dt><span jhiTranslate="amawalAmazighApp.wordInfo.contributionDate">Contribution Date</span></dt>
+        <dd>
+          <span>{{ wordInfo.contributionDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="amawalAmazighApp.wordInfo.validationDate">Validation Date</span></dt>
+        <dd>
+          <span>{{ wordInfo.validationDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="amawalAmazighApp.wordInfo.etat">Etat</span></dt>
+        <dd>
+          <span>{{ wordInfo.etat }}</span>
+        </dd>
+        <dt><span jhiTranslate="amawalAmazighApp.wordInfo.contributeur">Contributeur</span></dt>
+        <dd>
+          <div *ngIf="wordInfo.contributeur">
+            <a [routerLink]="['/utilisateur', wordInfo.contributeur?.id, 'view']">{{ wordInfo.contributeur?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="amawalAmazighApp.wordInfo.validateur">Validateur</span></dt>
+        <dd>
+          <div *ngIf="wordInfo.validateur">
+            <a [routerLink]="['/utilisateur', wordInfo.validateur?.id, 'view']">{{ wordInfo.validateur?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/word-info', wordInfo.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

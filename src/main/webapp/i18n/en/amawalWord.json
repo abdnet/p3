@@ -1,0 +1,32 @@
+{
+  "amawalAmazighApp": {
+    "amawalWord": {
+      "home": {
+        "title": "Amawal Words",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Amawal Word",
+        "createOrEditLabel": "Create or edit a Amawal Word",
+        "notFound": "No Amawal Words found"
+      },
+      "created": "A new Amawal Word is created with identifier {{ param }}",
+      "updated": "A Amawal Word is updated with identifier {{ param }}",
+      "deleted": "A Amawal Word is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Amawal Word {{ id }}?"
+      },
+      "detail": {
+        "title": "Amawal Word"
+      },
+      "id": "ID",
+      "wordId": "Word Id",
+      "orthographeTifinagh": "Orthographe Tifinagh",
+      "orthographeLatin": "Orthographe Latin",
+      "wordInfo": "Word Info",
+      "traduction": "Traduction",
+      "wordType": "Word Type",
+      "theme": "Theme",
+      "dialecte": "Dialecte",
+      "tamazightToLang": "Tamazight To Lang"
+    }
+  }
+}

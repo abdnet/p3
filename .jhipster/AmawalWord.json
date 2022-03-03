@@ -1,0 +1,67 @@
+{
+  "applications": ["AmawalAmazigh"],
+  "changelogDate": "20220303141513",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "amawal_word",
+  "fields": [
+    {
+      "fieldName": "wordId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "orthographeTifinagh",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "orthographeLatin",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "AmawalWord",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "wordInfo",
+      "otherEntityRelationshipName": "amawalWord",
+      "ownerSide": true,
+      "relationshipName": "wordInfo",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "tamazightToLang",
+      "otherEntityRelationshipName": "amawalWord",
+      "relationshipName": "traduction",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "wordType",
+      "otherEntityRelationshipName": "amawalWord",
+      "relationshipName": "wordType",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "theme",
+      "otherEntityRelationshipName": "amawalWord",
+      "relationshipName": "theme",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "dialecte",
+      "otherEntityRelationshipName": "word",
+      "ownerSide": true,
+      "relationshipName": "dialecte",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "tamazightToLang",
+      "otherEntityRelationshipName": "word",
+      "relationshipName": "tamazightToLang",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

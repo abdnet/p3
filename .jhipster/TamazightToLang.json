@@ -1,0 +1,40 @@
+{
+  "applications": ["AmawalAmazigh"],
+  "changelogDate": "20220303141413",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "tamazight_to_lang",
+  "fields": [
+    {
+      "fieldName": "traductionId",
+      "fieldType": "Long"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "TamazightToLang",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "langue",
+      "otherEntityRelationshipName": "tamazightToLang",
+      "ownerSide": true,
+      "relationshipName": "langue",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "amawalWord",
+      "otherEntityRelationshipName": "tamazightToLang",
+      "relationshipName": "word",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "amawalWord",
+      "otherEntityRelationshipName": "traduction",
+      "relationshipName": "amawalWord",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

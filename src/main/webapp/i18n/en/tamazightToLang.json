@@ -1,0 +1,27 @@
+{
+  "amawalAmazighApp": {
+    "tamazightToLang": {
+      "home": {
+        "title": "Tamazight To Langs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Tamazight To Lang",
+        "createOrEditLabel": "Create or edit a Tamazight To Lang",
+        "notFound": "No Tamazight To Langs found"
+      },
+      "created": "A new Tamazight To Lang is created with identifier {{ param }}",
+      "updated": "A Tamazight To Lang is updated with identifier {{ param }}",
+      "deleted": "A Tamazight To Lang is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Tamazight To Lang {{ id }}?"
+      },
+      "detail": {
+        "title": "Tamazight To Lang"
+      },
+      "id": "ID",
+      "traductionId": "Traduction Id",
+      "langue": "Langue",
+      "word": "Word",
+      "amawalWord": "Amawal Word"
+    }
+  }
+}

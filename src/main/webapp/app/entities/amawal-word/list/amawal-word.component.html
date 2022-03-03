@@ -1,0 +1,138 @@
+<div>
+  <h2 id="page-heading" data-cy="AmawalWordHeading">
+    <span jhiTranslate="amawalAmazighApp.amawalWord.home.title">Amawal Words</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadPage()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="amawalAmazighApp.amawalWord.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-amawal-word"
+        [routerLink]="['/amawal-word/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="amawalAmazighApp.amawalWord.home.createLabel"> Create a new Amawal Word </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="amawalWords?.length === 0">
+    <span jhiTranslate="amawalAmazighApp.amawalWord.home.notFound">No amawalWords found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="amawalWords && amawalWords.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="wordId">
+            <span jhiTranslate="amawalAmazighApp.amawalWord.wordId">Word Id</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="orthographeTifinagh">
+            <span jhiTranslate="amawalAmazighApp.amawalWord.orthographeTifinagh">Orthographe Tifinagh</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="orthographeLatin">
+            <span jhiTranslate="amawalAmazighApp.amawalWord.orthographeLatin">Orthographe Latin</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="wordInfo.id">
+            <span jhiTranslate="amawalAmazighApp.amawalWord.wordInfo">Word Info</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="wordType.id">
+            <span jhiTranslate="amawalAmazighApp.amawalWord.wordType">Word Type</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="theme.id">
+            <span jhiTranslate="amawalAmazighApp.amawalWord.theme">Theme</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="tamazightToLang.id">
+            <span jhiTranslate="amawalAmazighApp.amawalWord.tamazightToLang">Tamazight To Lang</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let amawalWord of amawalWords; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/amawal-word', amawalWord.id, 'view']">{{ amawalWord.id }}</a>
+          </td>
+          <td>{{ amawalWord.wordId }}</td>
+          <td>{{ amawalWord.orthographeTifinagh }}</td>
+          <td>{{ amawalWord.orthographeLatin }}</td>
+          <td>
+            <div *ngIf="amawalWord.wordInfo">
+              <a [routerLink]="['/word-info', amawalWord.wordInfo?.id, 'view']">{{ amawalWord.wordInfo?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="amawalWord.wordType">
+              <a [routerLink]="['/word-type', amawalWord.wordType?.id, 'view']">{{ amawalWord.wordType?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="amawalWord.theme">
+              <a [routerLink]="['/theme', amawalWord.theme?.id, 'view']">{{ amawalWord.theme?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="amawalWord.tamazightToLang">
+              <a [routerLink]="['/tamazight-to-lang', amawalWord.tamazightToLang?.id, 'view']">{{ amawalWord.tamazightToLang?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/amawal-word', amawalWord.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/amawal-word', amawalWord.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(amawalWord)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="amawalWords && amawalWords.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

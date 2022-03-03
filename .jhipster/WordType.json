@@ -1,0 +1,24 @@
+{
+  "applications": ["AmawalAmazigh"],
+  "changelogDate": "20220303140813",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "word_type",
+  "fields": [
+    {
+      "fieldName": "typeId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "WordType",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}

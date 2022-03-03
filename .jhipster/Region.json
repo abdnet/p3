@@ -1,0 +1,36 @@
+{
+  "applications": ["AmawalAmazigh"],
+  "changelogDate": "20220303141013",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "region",
+  "fields": [
+    {
+      "fieldName": "reginId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "regionNom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pays",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Region",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "dialecte",
+      "otherEntityRelationshipName": "region",
+      "ownerSide": false,
+      "relationshipName": "dialecte",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

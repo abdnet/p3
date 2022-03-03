@@ -1,0 +1,132 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-utilisateur-heading"
+        data-cy="UtilisateurCreateUpdateHeading"
+        jhiTranslate="amawalAmazighApp.utilisateur.home.createOrEditLabel"
+      >
+        Create or edit a Utilisateur
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="amawalAmazighApp.utilisateur.utilisateurId" for="field_utilisateurId"
+            >Utilisateur Id</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="utilisateurId"
+            id="field_utilisateurId"
+            data-cy="utilisateurId"
+            formControlName="utilisateurId"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="amawalAmazighApp.utilisateur.nom" for="field_nom">Nom</label>
+          <input type="text" class="form-control" name="nom" id="field_nom" data-cy="nom" formControlName="nom" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="amawalAmazighApp.utilisateur.prenom" for="field_prenom">Prenom</label>
+          <input type="text" class="form-control" name="prenom" id="field_prenom" data-cy="prenom" formControlName="prenom" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="amawalAmazighApp.utilisateur.adresseEmail" for="field_adresseEmail">Adresse Email</label>
+          <input
+            type="text"
+            class="form-control"
+            name="adresseEmail"
+            id="field_adresseEmail"
+            data-cy="adresseEmail"
+            formControlName="adresseEmail"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="amawalAmazighApp.utilisateur.avatar" for="field_avatar">Avatar</label>
+          <input type="text" class="form-control" name="avatar" id="field_avatar" data-cy="avatar" formControlName="avatar" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="amawalAmazighApp.utilisateur.dateInscription" for="field_dateInscription"
+            >Date Inscription</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_dateInscription"
+              data-cy="dateInscription"
+              type="datetime-local"
+              class="form-control"
+              name="dateInscription"
+              formControlName="dateInscription"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="amawalAmazighApp.utilisateur.validProfil" for="field_validProfil">Valid Profil</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="validProfil"
+            id="field_validProfil"
+            data-cy="validProfil"
+            formControlName="validProfil"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="amawalAmazighApp.utilisateur.activateProfil" for="field_activateProfil"
+            >Activate Profil</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="activateProfil"
+            id="field_activateProfil"
+            data-cy="activateProfil"
+            formControlName="activateProfil"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="amawalAmazighApp.utilisateur.genre" for="field_genre">Genre</label>
+          <input type="text" class="form-control" name="genre" id="field_genre" data-cy="genre" formControlName="genre" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="amawalAmazighApp.utilisateur.password" for="field_password">Password</label>
+          <input type="text" class="form-control" name="password" id="field_password" data-cy="password" formControlName="password" />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

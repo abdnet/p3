@@ -1,0 +1,68 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="utilisateur">
+      <h2 data-cy="utilisateurDetailsHeading"><span jhiTranslate="amawalAmazighApp.utilisateur.detail.title">Utilisateur</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ utilisateur.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="amawalAmazighApp.utilisateur.utilisateurId">Utilisateur Id</span></dt>
+        <dd>
+          <span>{{ utilisateur.utilisateurId }}</span>
+        </dd>
+        <dt><span jhiTranslate="amawalAmazighApp.utilisateur.nom">Nom</span></dt>
+        <dd>
+          <span>{{ utilisateur.nom }}</span>
+        </dd>
+        <dt><span jhiTranslate="amawalAmazighApp.utilisateur.prenom">Prenom</span></dt>
+        <dd>
+          <span>{{ utilisateur.prenom }}</span>
+        </dd>
+        <dt><span jhiTranslate="amawalAmazighApp.utilisateur.adresseEmail">Adresse Email</span></dt>
+        <dd>
+          <span>{{ utilisateur.adresseEmail }}</span>
+        </dd>
+        <dt><span jhiTranslate="amawalAmazighApp.utilisateur.avatar">Avatar</span></dt>
+        <dd>
+          <span>{{ utilisateur.avatar }}</span>
+        </dd>
+        <dt><span jhiTranslate="amawalAmazighApp.utilisateur.dateInscription">Date Inscription</span></dt>
+        <dd>
+          <span>{{ utilisateur.dateInscription | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="amawalAmazighApp.utilisateur.validProfil">Valid Profil</span></dt>
+        <dd>
+          <span>{{ utilisateur.validProfil }}</span>
+        </dd>
+        <dt><span jhiTranslate="amawalAmazighApp.utilisateur.activateProfil">Activate Profil</span></dt>
+        <dd>
+          <span>{{ utilisateur.activateProfil }}</span>
+        </dd>
+        <dt><span jhiTranslate="amawalAmazighApp.utilisateur.genre">Genre</span></dt>
+        <dd>
+          <span>{{ utilisateur.genre }}</span>
+        </dd>
+        <dt><span jhiTranslate="amawalAmazighApp.utilisateur.password">Password</span></dt>
+        <dd>
+          <span>{{ utilisateur.password }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/utilisateur', utilisateur.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
