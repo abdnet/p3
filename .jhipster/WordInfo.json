@@ -1,0 +1,45 @@
+{
+  "applications": ["AmawalAmazigh"],
+  "changelogDate": "20220303140913",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "word_info",
+  "fields": [
+    {
+      "fieldName": "wordInfoId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "contributionDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "validationDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "etat",
+      "fieldType": "Integer"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "WordInfo",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "utilisateur",
+      "otherEntityRelationshipName": "wordInfo",
+      "relationshipName": "contributeur",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "utilisateur",
+      "otherEntityRelationshipName": "wordInfo",
+      "relationshipName": "validateur",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

@@ -1,0 +1,86 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-category-heading" data-cy="CategoryCreateUpdateHeading" jhiTranslate="amawalAmazighApp.category.home.createOrEditLabel">
+        Create or edit a Category
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="amawalAmazighApp.category.categoryId" for="field_categoryId">Category Id</label>
+          <input
+            type="number"
+            class="form-control"
+            name="categoryId"
+            id="field_categoryId"
+            data-cy="categoryId"
+            formControlName="categoryId"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="amawalAmazighApp.category.securityLevel" for="field_securityLevel">Security Level</label>
+          <input
+            type="number"
+            class="form-control"
+            name="securityLevel"
+            id="field_securityLevel"
+            data-cy="securityLevel"
+            formControlName="securityLevel"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="amawalAmazighApp.category.utilisateurs" for="field_utilisateurs">Utilisateurs</label>
+          <select class="form-control" id="field_utilisateurs" data-cy="utilisateurs" name="utilisateurs" formControlName="utilisateurs">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                utilisateurOption.id === editForm.get('utilisateurs')!.value?.id ? editForm.get('utilisateurs')!.value : utilisateurOption
+              "
+              *ngFor="let utilisateurOption of utilisateursSharedCollection; trackBy: trackUtilisateurById"
+            >
+              {{ utilisateurOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="amawalAmazighApp.category.groupe" for="field_groupe">Groupe</label>
+          <select class="form-control" id="field_groupe" data-cy="groupe" name="groupe" formControlName="groupe">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="groupeOption.id === editForm.get('groupe')!.value?.id ? editForm.get('groupe')!.value : groupeOption"
+              *ngFor="let groupeOption of groupesSharedCollection; trackBy: trackGroupeById"
+            >
+              {{ groupeOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,96 @@
+<div>
+  <h2 id="page-heading" data-cy="WordInfoHeading">
+    <span jhiTranslate="amawalAmazighApp.wordInfo.home.title">Word Infos</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="amawalAmazighApp.wordInfo.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-word-info"
+        [routerLink]="['/word-info/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="amawalAmazighApp.wordInfo.home.createLabel"> Create a new Word Info </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="wordInfos?.length === 0">
+    <span jhiTranslate="amawalAmazighApp.wordInfo.home.notFound">No wordInfos found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="wordInfos && wordInfos.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="amawalAmazighApp.wordInfo.wordInfoId">Word Info Id</span></th>
+          <th scope="col"><span jhiTranslate="amawalAmazighApp.wordInfo.contributionDate">Contribution Date</span></th>
+          <th scope="col"><span jhiTranslate="amawalAmazighApp.wordInfo.validationDate">Validation Date</span></th>
+          <th scope="col"><span jhiTranslate="amawalAmazighApp.wordInfo.etat">Etat</span></th>
+          <th scope="col"><span jhiTranslate="amawalAmazighApp.wordInfo.contributeur">Contributeur</span></th>
+          <th scope="col"><span jhiTranslate="amawalAmazighApp.wordInfo.validateur">Validateur</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let wordInfo of wordInfos; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/word-info', wordInfo.id, 'view']">{{ wordInfo.id }}</a>
+          </td>
+          <td>{{ wordInfo.wordInfoId }}</td>
+          <td>{{ wordInfo.contributionDate | formatMediumDatetime }}</td>
+          <td>{{ wordInfo.validationDate | formatMediumDatetime }}</td>
+          <td>{{ wordInfo.etat }}</td>
+          <td>
+            <div *ngIf="wordInfo.contributeur">
+              <a [routerLink]="['/utilisateur', wordInfo.contributeur?.id, 'view']">{{ wordInfo.contributeur?.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="wordInfo.validateur">
+              <a [routerLink]="['/utilisateur', wordInfo.validateur?.id, 'view']">{{ wordInfo.validateur?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/word-info', wordInfo.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/word-info', wordInfo.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(wordInfo)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

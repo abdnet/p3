@@ -1,0 +1,65 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-groupe-heading" data-cy="GroupeCreateUpdateHeading" jhiTranslate="amawalAmazighApp.groupe.home.createOrEditLabel">
+        Create or edit a Groupe
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="amawalAmazighApp.groupe.groupeId" for="field_groupeId">Groupe Id</label>
+          <input type="number" class="form-control" name="groupeId" id="field_groupeId" data-cy="groupeId" formControlName="groupeId" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="amawalAmazighApp.groupe.groupeCode" for="field_groupeCode">Groupe Code</label>
+          <input
+            type="text"
+            class="form-control"
+            name="groupeCode"
+            id="field_groupeCode"
+            data-cy="groupeCode"
+            formControlName="groupeCode"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="amawalAmazighApp.groupe.habilitationLevel" for="field_habilitationLevel"
+            >Habilitation Level</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="habilitationLevel"
+            id="field_habilitationLevel"
+            data-cy="habilitationLevel"
+            formControlName="habilitationLevel"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

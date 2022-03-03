@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity TamazightToLang.
+    -->
+    <changeSet id="20220303141413-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="langue_id"
+                                 baseTableName="tamazight_to_lang"
+                                 constraintName="fk_tamazight_to_lang__langue_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="langue"/>
+
+        <addForeignKeyConstraint baseColumnNames="amawal_word_id"
+                                 baseTableName="tamazight_to_lang"
+                                 constraintName="fk_tamazight_to_lang__amawal_word_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="amawal_word"/>
+    </changeSet>
+</databaseChangeLog>

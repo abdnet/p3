@@ -1,0 +1,27 @@
+{
+  "amawalAmazighApp": {
+    "dialecte": {
+      "home": {
+        "title": "Dialectes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Dialecte",
+        "createOrEditLabel": "Create or edit a Dialecte",
+        "notFound": "No Dialectes found"
+      },
+      "created": "A new Dialecte is created with identifier {{ param }}",
+      "updated": "A Dialecte is updated with identifier {{ param }}",
+      "deleted": "A Dialecte is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Dialecte {{ id }}?"
+      },
+      "detail": {
+        "title": "Dialecte"
+      },
+      "id": "ID",
+      "dialecteId": "Dialecte Id",
+      "dialecte": "Dialecte",
+      "region": "Region",
+      "word": "Word"
+    }
+  }
+}

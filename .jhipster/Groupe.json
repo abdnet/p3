@@ -1,0 +1,28 @@
+{
+  "applications": ["AmawalAmazigh"],
+  "changelogDate": "20220303140513",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "groupe",
+  "fields": [
+    {
+      "fieldName": "groupeId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "groupeCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "habilitationLevel",
+      "fieldType": "Integer"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Groupe",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}

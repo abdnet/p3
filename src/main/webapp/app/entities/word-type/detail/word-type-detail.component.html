@@ -1,0 +1,36 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="wordType">
+      <h2 data-cy="wordTypeDetailsHeading"><span jhiTranslate="amawalAmazighApp.wordType.detail.title">Word Type</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ wordType.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="amawalAmazighApp.wordType.typeId">Type Id</span></dt>
+        <dd>
+          <span>{{ wordType.typeId }}</span>
+        </dd>
+        <dt><span jhiTranslate="amawalAmazighApp.wordType.type">Type</span></dt>
+        <dd>
+          <span>{{ wordType.type }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/word-type', wordType.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

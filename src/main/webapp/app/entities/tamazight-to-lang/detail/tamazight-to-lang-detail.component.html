@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="tamazightToLang">
+      <h2 data-cy="tamazightToLangDetailsHeading">
+        <span jhiTranslate="amawalAmazighApp.tamazightToLang.detail.title">Tamazight To Lang</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ tamazightToLang.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="amawalAmazighApp.tamazightToLang.traductionId">Traduction Id</span></dt>
+        <dd>
+          <span>{{ tamazightToLang.traductionId }}</span>
+        </dd>
+        <dt><span jhiTranslate="amawalAmazighApp.tamazightToLang.langue">Langue</span></dt>
+        <dd>
+          <div *ngIf="tamazightToLang.langue">
+            <a [routerLink]="['/langue', tamazightToLang.langue?.id, 'view']">{{ tamazightToLang.langue?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="amawalAmazighApp.tamazightToLang.amawalWord">Amawal Word</span></dt>
+        <dd>
+          <div *ngIf="tamazightToLang.amawalWord">
+            <a [routerLink]="['/amawal-word', tamazightToLang.amawalWord?.id, 'view']">{{ tamazightToLang.amawalWord?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/tamazight-to-lang', tamazightToLang.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

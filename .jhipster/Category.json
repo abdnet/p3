@@ -1,0 +1,37 @@
+{
+  "applications": ["AmawalAmazigh"],
+  "changelogDate": "20220303140713",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "category",
+  "fields": [
+    {
+      "fieldName": "categoryId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "securityLevel",
+      "fieldType": "Integer"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Category",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "utilisateur",
+      "otherEntityRelationshipName": "category",
+      "relationshipName": "utilisateurs",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "groupe",
+      "otherEntityRelationshipName": "category",
+      "relationshipName": "groupe",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

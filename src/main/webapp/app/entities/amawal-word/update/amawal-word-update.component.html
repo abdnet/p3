@@ -1,0 +1,147 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-amawal-word-heading"
+        data-cy="AmawalWordCreateUpdateHeading"
+        jhiTranslate="amawalAmazighApp.amawalWord.home.createOrEditLabel"
+      >
+        Create or edit a Amawal Word
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="amawalAmazighApp.amawalWord.wordId" for="field_wordId">Word Id</label>
+          <input type="number" class="form-control" name="wordId" id="field_wordId" data-cy="wordId" formControlName="wordId" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="amawalAmazighApp.amawalWord.orthographeTifinagh" for="field_orthographeTifinagh"
+            >Orthographe Tifinagh</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="orthographeTifinagh"
+            id="field_orthographeTifinagh"
+            data-cy="orthographeTifinagh"
+            formControlName="orthographeTifinagh"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="amawalAmazighApp.amawalWord.orthographeLatin" for="field_orthographeLatin"
+            >Orthographe Latin</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="orthographeLatin"
+            id="field_orthographeLatin"
+            data-cy="orthographeLatin"
+            formControlName="orthographeLatin"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="amawalAmazighApp.amawalWord.wordInfo" for="field_wordInfo">Word Info</label>
+          <select class="form-control" id="field_wordInfo" data-cy="wordInfo" name="wordInfo" formControlName="wordInfo">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="wordInfoOption.id === editForm.get('wordInfo')!.value?.id ? editForm.get('wordInfo')!.value : wordInfoOption"
+              *ngFor="let wordInfoOption of wordInfosCollection; trackBy: trackWordInfoById"
+            >
+              {{ wordInfoOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="amawalAmazighApp.amawalWord.wordType" for="field_wordType">Word Type</label>
+          <select class="form-control" id="field_wordType" data-cy="wordType" name="wordType" formControlName="wordType">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="wordTypeOption.id === editForm.get('wordType')!.value?.id ? editForm.get('wordType')!.value : wordTypeOption"
+              *ngFor="let wordTypeOption of wordTypesSharedCollection; trackBy: trackWordTypeById"
+            >
+              {{ wordTypeOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="amawalAmazighApp.amawalWord.theme" for="field_theme">Theme</label>
+          <select class="form-control" id="field_theme" data-cy="theme" name="theme" formControlName="theme">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="themeOption.id === editForm.get('theme')!.value?.id ? editForm.get('theme')!.value : themeOption"
+              *ngFor="let themeOption of themesSharedCollection; trackBy: trackThemeById"
+            >
+              {{ themeOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label jhiTranslate="amawalAmazighApp.amawalWord.dialecte" for="field_dialectes">Dialecte</label>
+          <select class="form-control" id="field_dialectes" data-cy="dialecte" multiple name="dialectes" formControlName="dialectes">
+            <option
+              [ngValue]="getSelectedDialecte(dialecteOption, editForm.get('dialectes')!.value)"
+              *ngFor="let dialecteOption of dialectesSharedCollection; trackBy: trackDialecteById"
+            >
+              {{ dialecteOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="amawalAmazighApp.amawalWord.tamazightToLang" for="field_tamazightToLang"
+            >Tamazight To Lang</label
+          >
+          <select
+            class="form-control"
+            id="field_tamazightToLang"
+            data-cy="tamazightToLang"
+            name="tamazightToLang"
+            formControlName="tamazightToLang"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                tamazightToLangOption.id === editForm.get('tamazightToLang')!.value?.id
+                  ? editForm.get('tamazightToLang')!.value
+                  : tamazightToLangOption
+              "
+              *ngFor="let tamazightToLangOption of tamazightToLangsSharedCollection; trackBy: trackTamazightToLangById"
+            >
+              {{ tamazightToLangOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+{
+  "amawalAmazighApp": {
+    "wordType": {
+      "home": {
+        "title": "Word Types",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Word Type",
+        "createOrEditLabel": "Create or edit a Word Type",
+        "notFound": "No Word Types found"
+      },
+      "created": "A new Word Type is created with identifier {{ param }}",
+      "updated": "A Word Type is updated with identifier {{ param }}",
+      "deleted": "A Word Type is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Word Type {{ id }}?"
+      },
+      "detail": {
+        "title": "Word Type"
+      },
+      "id": "ID",
+      "typeId": "Type Id",
+      "type": "Type"
+    }
+  }
+}

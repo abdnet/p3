@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity AmawalWord.
+    -->
+    <changeSet id="20220303141513-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="word_info_id"
+                                 baseTableName="amawal_word"
+                                 constraintName="fk_amawal_word__word_info_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="word_info"/>
+
+        <addForeignKeyConstraint baseColumnNames="word_type_id"
+                                 baseTableName="amawal_word"
+                                 constraintName="fk_amawal_word__word_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="word_type"/>
+
+        <addForeignKeyConstraint baseColumnNames="theme_id"
+                                 baseTableName="amawal_word"
+                                 constraintName="fk_amawal_word__theme_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="theme"/>
+
+        <addForeignKeyConstraint baseColumnNames="amawal_word_id"
+                                 baseTableName="rel_amawal_word__dialecte"
+                                 constraintName="fk_rel_amawal_word__dialecte__amawal_word_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="amawal_word"/>
+
+        <addForeignKeyConstraint baseColumnNames="dialecte_id"
+                                 baseTableName="rel_amawal_word__dialecte"
+                                 constraintName="fk_rel_amawal_word__dialecte__dialecte_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="dialecte"/>
+
+        <addForeignKeyConstraint baseColumnNames="tamazight_to_lang_id"
+                                 baseTableName="amawal_word"
+                                 constraintName="fk_amawal_word__tamazight_to_lang_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tamazight_to_lang"/>
+    </changeSet>
+</databaseChangeLog>

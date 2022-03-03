@@ -1,0 +1,24 @@
+{
+  "applications": ["AmawalAmazigh"],
+  "changelogDate": "20220303141113",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "theme",
+  "fields": [
+    {
+      "fieldName": "themeId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "theme",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Theme",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}

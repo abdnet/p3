@@ -1,0 +1,80 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-tamazight-to-lang-heading"
+        data-cy="TamazightToLangCreateUpdateHeading"
+        jhiTranslate="amawalAmazighApp.tamazightToLang.home.createOrEditLabel"
+      >
+        Create or edit a Tamazight To Lang
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="amawalAmazighApp.tamazightToLang.traductionId" for="field_traductionId"
+            >Traduction Id</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="traductionId"
+            id="field_traductionId"
+            data-cy="traductionId"
+            formControlName="traductionId"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="amawalAmazighApp.tamazightToLang.langue" for="field_langue">Langue</label>
+          <select class="form-control" id="field_langue" data-cy="langue" name="langue" formControlName="langue">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="langueOption.id === editForm.get('langue')!.value?.id ? editForm.get('langue')!.value : langueOption"
+              *ngFor="let langueOption of languesCollection; trackBy: trackLangueById"
+            >
+              {{ langueOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="amawalAmazighApp.tamazightToLang.amawalWord" for="field_amawalWord">Amawal Word</label>
+          <select class="form-control" id="field_amawalWord" data-cy="amawalWord" name="amawalWord" formControlName="amawalWord">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                amawalWordOption.id === editForm.get('amawalWord')!.value?.id ? editForm.get('amawalWord')!.value : amawalWordOption
+              "
+              *ngFor="let amawalWordOption of amawalWordsSharedCollection; trackBy: trackAmawalWordById"
+            >
+              {{ amawalWordOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

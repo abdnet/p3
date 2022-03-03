@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="category">
+      <h2 data-cy="categoryDetailsHeading"><span jhiTranslate="amawalAmazighApp.category.detail.title">Category</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ category.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="amawalAmazighApp.category.categoryId">Category Id</span></dt>
+        <dd>
+          <span>{{ category.categoryId }}</span>
+        </dd>
+        <dt><span jhiTranslate="amawalAmazighApp.category.securityLevel">Security Level</span></dt>
+        <dd>
+          <span>{{ category.securityLevel }}</span>
+        </dd>
+        <dt><span jhiTranslate="amawalAmazighApp.category.utilisateurs">Utilisateurs</span></dt>
+        <dd>
+          <div *ngIf="category.utilisateurs">
+            <a [routerLink]="['/utilisateur', category.utilisateurs?.id, 'view']">{{ category.utilisateurs?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="amawalAmazighApp.category.groupe">Groupe</span></dt>
+        <dd>
+          <div *ngIf="category.groupe">
+            <a [routerLink]="['/groupe', category.groupe?.id, 'view']">{{ category.groupe?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/category', category.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

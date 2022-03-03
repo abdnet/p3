@@ -1,0 +1,71 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="amawalWord">
+      <h2 data-cy="amawalWordDetailsHeading"><span jhiTranslate="amawalAmazighApp.amawalWord.detail.title">Amawal Word</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ amawalWord.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="amawalAmazighApp.amawalWord.wordId">Word Id</span></dt>
+        <dd>
+          <span>{{ amawalWord.wordId }}</span>
+        </dd>
+        <dt><span jhiTranslate="amawalAmazighApp.amawalWord.orthographeTifinagh">Orthographe Tifinagh</span></dt>
+        <dd>
+          <span>{{ amawalWord.orthographeTifinagh }}</span>
+        </dd>
+        <dt><span jhiTranslate="amawalAmazighApp.amawalWord.orthographeLatin">Orthographe Latin</span></dt>
+        <dd>
+          <span>{{ amawalWord.orthographeLatin }}</span>
+        </dd>
+        <dt><span jhiTranslate="amawalAmazighApp.amawalWord.wordInfo">Word Info</span></dt>
+        <dd>
+          <div *ngIf="amawalWord.wordInfo">
+            <a [routerLink]="['/word-info', amawalWord.wordInfo?.id, 'view']">{{ amawalWord.wordInfo?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="amawalAmazighApp.amawalWord.wordType">Word Type</span></dt>
+        <dd>
+          <div *ngIf="amawalWord.wordType">
+            <a [routerLink]="['/word-type', amawalWord.wordType?.id, 'view']">{{ amawalWord.wordType?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="amawalAmazighApp.amawalWord.theme">Theme</span></dt>
+        <dd>
+          <div *ngIf="amawalWord.theme">
+            <a [routerLink]="['/theme', amawalWord.theme?.id, 'view']">{{ amawalWord.theme?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="amawalAmazighApp.amawalWord.dialecte">Dialecte</span></dt>
+        <dd>
+          <span *ngFor="let dialecte of amawalWord.dialectes; let last = last">
+            <a [routerLink]="['/dialecte', dialecte?.id, 'view']">{{ dialecte.id }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span jhiTranslate="amawalAmazighApp.amawalWord.tamazightToLang">Tamazight To Lang</span></dt>
+        <dd>
+          <div *ngIf="amawalWord.tamazightToLang">
+            <a [routerLink]="['/tamazight-to-lang', amawalWord.tamazightToLang?.id, 'view']">{{ amawalWord.tamazightToLang?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/amawal-word', amawalWord.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+{
+  "applications": ["AmawalAmazigh"],
+  "changelogDate": "20220303141213",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "langue",
+  "fields": [
+    {
+      "fieldName": "langueId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "langue",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Langue",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}
